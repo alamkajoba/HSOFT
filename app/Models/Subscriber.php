@@ -11,6 +11,7 @@ class Subscriber extends Model
         'middleName',
         'lastName',
         'gender',
+        'bloodGroup',
         'birthDate',
         'birthTown',
         'affectation',

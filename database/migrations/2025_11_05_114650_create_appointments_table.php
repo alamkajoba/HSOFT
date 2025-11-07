@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\ConsultationStatusEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,6 +14,9 @@ return new class extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
+            $table->integer('subscriberId');
+            $table->float('weight');
+            $table->enum('consultationStatus', ConsultationStatusEnum::values());
             $table->timestamps();
         });
     }

@@ -65,6 +65,14 @@
                             @endforeach
                         </select>
 
+                        <label for="bloodGroup">Groupe sanguin</label>
+                        <select wire:model="bloodGroup" id="bloodGroup" class="form-control">
+                            <option>Selectionner...</option>
+                            @foreach ($this->bloodGroups() as $bloodGroup)
+                                <option value="{{ $bloodGroup }}">{{ $bloodGroup }}</option>
+                            @endforeach
+                        </select>
+
                         <label for="birthDate">Date de naissance</label>
                         <input 
                             required

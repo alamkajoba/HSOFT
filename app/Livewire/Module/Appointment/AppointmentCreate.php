@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Module\Appointment;
 
+use App\Enums\ConsultationStatusEnum;
+use App\Models\Appointment;
 use App\Models\Subscriber;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -15,6 +17,7 @@ class AppointmentCreate extends Component
     public $itemsSubscriber = [];
     public $selectedSubscriber = [null];
     public $subscriberId;
+    public $weight;
 
 
 
@@ -39,6 +42,19 @@ class AppointmentCreate extends Component
         $this->subscriberId = $this->selectedSubscriber['id'];
         $this->itemsSubscriber = []; // Vide les suggestions
 
+    }
+
+    //Submit Appointment
+    public function appointmentCreate()
+    {
+        $appointment = Appointment::create([
+            'subscriberId' => $this->subscriberId,
+            'consultationStatus' => ConsultationStatusEnum::CANCELLED->value,
+            'weight' => $this->weight
+        ]);
+
+        session()->flash('success', "Le rendez-vous consultation a été créé avec succès.");
+        return redirect()->to(route('appointment.create'));
     }
 
 

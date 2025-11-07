@@ -3,6 +3,7 @@
 namespace App\Livewire\Module\Subscriber;
 
 use App\Enums\GenderEnum;
+use App\Enums\BloodGroupEnum;
 use App\Enums\TypeEnum;
 use App\Models\Subscriber;
 use Livewire\Component;
@@ -28,6 +29,9 @@ class SubscriberCreate extends Component
 
     #[Validate('required')]
     public $gender = '';
+
+    #[Validate('required')]
+    public $bloodGroup = '';
 
     #[Validate('required|date|before_or_equal:today')]
     public $birthDate = '';
@@ -60,6 +64,7 @@ class SubscriberCreate extends Component
             'middleName' => $this->middleName,
             'lastName' => $this->lastName,
             'gender' => $this->gender,
+            'bloodGroup' => $this->bloodGroup,
             'birthDate' => $this->birthDate,
             'birthTown' => $this->birthTown,
             'matricule' => $this->matricule,
@@ -106,6 +111,12 @@ class SubscriberCreate extends Component
     private function types(): array
     {
         return TypeEnum::cases();
+    }
+
+    //Blood Group Enum
+    private function bloodGroups(): array
+    {
+        return BloodGroupEnum::cases();
     }
 
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\BloodGroupEnum;
 use App\Enums\GenderEnum;
 use App\Enums\TypeEnum;
 use Illuminate\Database\Migrations\Migration;
@@ -19,6 +20,7 @@ return new class extends Migration
             $table->string('middleName');
             $table->string('lastName');
             $table->enum('gender', GenderEnum::values());
+            $table->enum('bloodGroup', BloodGroupEnum::values());
             $table->string('birthDate');
             $table->string('birthTown');
             $table->string('matricule');
