@@ -17,7 +17,7 @@ class ConsultationCreate extends Component
     #[Validate('required')]
     public $symptomPatient;
 
-    #[Validate('nullable')]
+    #[Validate('required')]
     public $PhysicalExam;
 
     #[Validate('nullable')]
@@ -29,7 +29,7 @@ class ConsultationCreate extends Component
     #[Validate('nullable')]
     public $radioExam;
 
-    #[Validate('required')]
+    #[Validate('nullable')]
     public $treatment;
 
     #[Validate('nullable')]
@@ -58,24 +58,42 @@ class ConsultationCreate extends Component
 
     public function submitConsultation()
     {
-        $this->validate();
-        $consultation = Consultation::create([
-            'subscriberId' => $this->subscriberId,
-            'symptomPatient' => $this->symptomPatient,
-            'PhysicalExam' => $this->PhysicalExam,
-            'vitalSign' => $this->vitalSign,
-            'labExam' => $this->labExam,
-            'radioExam' => $this->radioExam,
-            'treatment' => $this->treatment,
-            'specialNote' => $this->specialNote
-        ]);
         
-        $appointment = Appointment::findOrFail($this->appointmentId);
+        $this->validate();
 
+        //Check if lab requested
+        if($this->labExam != '')
+        {
+            $consultation = Consultation::create([
+                'subscriberId' => $this->subscriberId,
+                'symptomPatient' => $this->symptomPatient,
+                'PhysicalExam' => $this->PhysicalExam,
+                'vitalSign' => $this->vitalSign,
+                'labExam' => $this->labExam,
+                'radioExam' => $this->radioExam,
+                'treatment' => $this->treatment,
+                'specialNote' => $this->specialNote,
+                'LabExamStatusEnum' => ConsultationStatusEnum::PENDING->value
+            ]);
+        }
+        else {
+            $consultation = Consultation::create([
+                'subscriberId' => $this->subscriberId,
+                'symptomPatient' => $this->symptomPatient,
+                'PhysicalExam' => $this->PhysicalExam,
+                'vitalSign' => $this->vitalSign,
+                'labExam' => $this->labExam,
+                'radioExam' => $this->radioExam,
+                'treatment' => $this->treatment,
+                'specialNote' => $this->specialNote,
+                'LabExamStatusEnum' => ConsultationStatusEnum::NONE->value
+            ]);
+        }
+
+        $appointment = Appointment::findOrFail($this->appointmentId);
         $appointment->update([
             'consultationStatus' => ConsultationStatusEnum::DONE->value
         ]);
-
         session()->flash('success', "Consultation finie");
         return redirect()->to(route('appointment.index'));
 

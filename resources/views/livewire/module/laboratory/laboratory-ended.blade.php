@@ -26,7 +26,7 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">
             <i style="color:rgb(0, 0, 0);" class="fas fa-fw fa-users"></i>
-            Liste des examens en attentes
+            Liste des examens termines
         </h1>
         <div class="d-none d-sm-inline-block shadow-sm">
             <input wire:model.live="search" class="form-control" type="text" placeholder="Rechercher...">
@@ -120,6 +120,7 @@
         <!-- ModalEnd -->
     </div>
 </div>
+
 
 
 

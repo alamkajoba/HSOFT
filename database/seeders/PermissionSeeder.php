@@ -30,6 +30,13 @@ class PermissionSeeder extends Seeder
                 'peut voir une classe',
             ],
 
+            'Laboratoire' => [
+                'peut créer un utilisateur',
+                'peut modifier un utilisateur',
+                'peut supprimer un utilisateur',
+                'peut voir un utilisateur',
+            ],
+
             'Abonée' => [
                 'peut créer un abonée',
                 'peut modifier un abonée',

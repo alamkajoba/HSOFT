@@ -35,8 +35,16 @@
                 </a>
                 <div id="collapsesubscriber" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a style="color:black;" class="collapse-item" href="{{route('subscriber.index')}}">Liste des abonné(e)s</a>
-                        <a style="color:black;" class="collapse-item" href="{{route('subscriber.create')}}">Ajouter un abonné</a>
+                        @can('peut voir un abonée')
+                            <a style="color:black;" class="collapse-item" href="{{route('subscriber.index')}}">
+                                Liste des abonné(e)s
+                            </a>
+                        @endcan
+                        @can('peut créer un abonée')
+                            <a style="color:black;" class="collapse-item" href="{{route('subscriber.create')}}">
+                                Ajouter un abonné
+                            </a>
+                        @endcan
                     </div>
                 </div>
             </li>
@@ -52,10 +60,26 @@
                 <div id="collapseappointment" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a style="color:black;" class="collapse-item" href="{{route('appointment.index')}}">Fil d'attente</a>
-                        <a style="color:black;" class="collapse-item" href="{{route('appointment.create')}}">Ajouter un nouveau</a>
-                        <a style="color:black;" class="collapse-item" href="{{route('consultation.ended')}}">Consultations finies</a>
-                        <a style="color:black;" class="collapse-item" href="{{route('consultation.cancelled')}}">Consultations annulées</a>
+                        @can('peut voir un rendez-vous')
+                            <a style="color:black;" class="collapse-item" href="{{route('appointment.index')}}">
+                                Fil d'attente
+                            </a>
+                        @endcan
+                        @can('peut créer un rendez-vous')
+                            <a style="color:black;" class="collapse-item" href="{{route('appointment.create')}}">
+                                Ajouter un nouveau
+                            </a>
+                        @endcan
+                        @can('peut voir une consultation finie')
+                            <a style="color:black;" class="collapse-item" href="{{route('consultation.ended')}}">
+                                Consultations finies
+                            </a>
+                        @endcan
+                        @can('peut voir une consultation annulée')
+                            <a style="color:black;" class="collapse-item" href="{{route('consultation.cancelled')}}">
+                                Consultations annulées
+                            </a>
+                        @endcan
                     </div>
                 </div>
             </li>
@@ -114,12 +138,49 @@
                 <div id="collapseLabo" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a style="color:black;" class="collapse-item" href="">Fil d'attente</a>
-                        <a style="color:black;" class="collapse-item" href="">Tests finis</a>
+                        @can('peut créer un rendez-vous')
+                            <a style="color:black;" class="collapse-item" href="{{ route('laboratory.index')}}">
+                                Examens en attente
+                            </a>
+                        @endcan
+                        @can('peut créer un rendez-vous')
+                            <a style="color:black;" class="collapse-item" href="{{ route('laboratory.ended')}}">
+                                Examens finis
+                            </a>
+                        @endcan
+                        @can('peut créer un rendez-vous')
+                            <a style="color:black;" class="collapse-item" href="{{ route('laboratory.cancelled')}}">
+                                Examens anulés
+                            </a>
+                        @endcan
                     </div>
                 </div>
             </li>
 
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div style="color:white;" class="sidebar-heading">
+                Resultats
+            </div>
+
+            {{--After Exam--}}
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAfter"
+                    aria-expanded="true" aria-controls="collapseAfter">
+                    <i style="color:white;" class="fas fa-spinner"></i>
+                    <span style="color:white;"> Resultats (Labo/Radio)</span>
+                </a>
+                <div id="collapseAfter" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a style="color:black;" class="collapse-item" href="{{ route('laboratory.index')}}">Fil d'attente</a>
+                    </div>
+                </div>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">

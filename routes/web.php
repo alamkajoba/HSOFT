@@ -6,6 +6,10 @@ use App\Livewire\Module\Consultation\ConsultationCancelled;
 use App\Livewire\Module\Consultation\ConsultationCreate;
 use App\Livewire\Module\Consultation\ConsultationEnded;
 use App\Livewire\Module\HomPage\HomePage;
+use App\Livewire\Module\Laboratory\LaboratoryCancelled;
+use App\Livewire\Module\Laboratory\LaboratoryEnded;
+use App\Livewire\Module\Laboratory\LaboratoryIndex;
+use App\Livewire\Module\Laboratory\LaboratoryResult;
 use App\Livewire\Module\Permission\PermissionAssign;
 use App\Livewire\Module\Subscriber\SubscriberIndex;
 use App\Livewire\Module\Subscriber\SubscriberCreate;
@@ -41,6 +45,15 @@ Route::middleware('auth')->prefix('consultation')->name('consultation.')->group(
     Route::get('cancelled', ConsultationCancelled::class)->name('cancelled');
     Route::get('ended', ConsultationEnded::class)->name('ended');
 });
+
+#Laboratory routes
+Route::middleware('auth')->prefix('laboratory')->name('laboratory.')->group(function () {
+    Route::get('index', LaboratoryIndex::class)->name('index');
+    Route::get('create', LaboratoryResult::class)->name('create');
+    Route::get('ended', LaboratoryEnded::class)->name('ended');
+    Route::get('cancelled', LaboratoryCancelled::class)->name('cancelled');
+});
+
 
 #Home routes
 Route::middleware('auth')->prefix('dashboard')->name('dashboard.')->group(function () {

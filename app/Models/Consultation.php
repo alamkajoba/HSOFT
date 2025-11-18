@@ -16,6 +16,8 @@ class Consultation extends Model
         'radioExam',
         'radioResult',
         'treatment',
-        'specialNote'
+        'specialNote',
+        'LabExamStatusEnum', //Status of Labroom
+        //'RadioExamStatusEnum' //Status of Labroom
     ];
 }

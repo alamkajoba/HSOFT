@@ -8,6 +8,7 @@ enum ConsultationStatusEnum :string
     case PROCESSING = 'EN COURS';
     case DONE = 'TERMINEE';
     case CANCELLED = 'ANULEE';
+    case NONE = 'VIDE';
 
     public static function values(): array
     {
