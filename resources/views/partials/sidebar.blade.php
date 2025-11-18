@@ -98,8 +98,8 @@
                 <div id="collapseUsers" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a style="color:black;" class="collapse-item" href="">Liste agent(dispensaire)</a>
-                        <a style="color:black;" class="collapse-item" href="">Ajouter un agent</a>
+                        <a style="color:black;" class="collapse-item" href="{{route('user.index')}}">Liste agent (dispensaire)</a>
+                        <a style="color:black;" class="collapse-item" href="{{route('user.create')}}">Ajouter un agent</a>
                     </div>
                 </div>
             </li>

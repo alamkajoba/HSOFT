@@ -6,9 +6,13 @@ use App\Livewire\Module\Consultation\ConsultationCancelled;
 use App\Livewire\Module\Consultation\ConsultationCreate;
 use App\Livewire\Module\Consultation\ConsultationEnded;
 use App\Livewire\Module\HomPage\HomePage;
+use App\Livewire\Module\Permission\PermissionAssign;
 use App\Livewire\Module\Subscriber\SubscriberIndex;
 use App\Livewire\Module\Subscriber\SubscriberCreate;
 use App\Livewire\Module\Subscriber\SubscriberUpdate;
+use App\Livewire\Module\User\UserCreate;
+use App\Livewire\Module\User\UserIndex;
+use App\Livewire\Module\User\UserUpdate;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -43,10 +47,19 @@ Route::middleware('auth')->prefix('dashboard')->name('dashboard.')->group(functi
     Route::get('dashboard', HomePage::class)->name('dashboard');
 });
 
-Route::view('profile', 'profile')
-    ->middleware(['auth'])
-    ->name('profile');
+#User route
+Route::middleware('auth')->prefix('user')->name('user.')->group(function () {
+    Route::get('usercreate', UserCreate::class)->name('create');
+    Route::get('userindex', UserIndex::class)->name('index');
+    Route::get('userupdate/{id}', UserUpdate::class)->name('userupdate');
+});
 
+#Permission routes
+Route::middleware('auth')->prefix('permission')->name('permission.')->group(function () {
+    Route::get('assign/{id}', PermissionAssign::class)->name('assign');
+});
+
+#Logout route
 Route::post('/logout', function (Request $request) {
     Auth::logout();
     $request->session()->invalidate();
