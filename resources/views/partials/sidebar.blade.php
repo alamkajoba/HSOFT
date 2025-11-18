@@ -46,14 +46,16 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseappointment"
                     aria-expanded="true" aria-controls="collapseappointment">
-                    <i style="color:white;" class="fas fa-spinner"></i>
-                    <span style="color:white;">Rendez-vous</span>
+                    <i style="color:white;" class="fas fa-thermometer-empty"></i>
+                    <span style="color:white;">Consultation</span>
                 </a>
                 <div id="collapseappointment" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a style="color:black;" class="collapse-item" href="{{route('appointment.index')}}">Liste des rendez-vous</a>
+                        <a style="color:black;" class="collapse-item" href="{{route('appointment.index')}}">Fil d'attente</a>
                         <a style="color:black;" class="collapse-item" href="{{route('appointment.create')}}">Ajouter un nouveau</a>
+                        <a style="color:black;" class="collapse-item" href="{{route('consultation.ended')}}">Consultations finies</a>
+                        <a style="color:black;" class="collapse-item" href="{{route('consultation.cancelled')}}">Consultations annulées</a>
                     </div>
                 </div>
             </li>
@@ -64,7 +66,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseconsultation"
                     aria-expanded="true" aria-controls="collapseconsultation">
-                    <i style="color:white;" class="fas fa-thermometer-empty"></i>
+                    <i style="color:white;" class="fas fa-spinner"></i>
                     <span style="color:white;"> Consultation</span>
                 </a>
                 <div id="collapseconsultation" class="collapse" aria-labelledby="headingUtilities"

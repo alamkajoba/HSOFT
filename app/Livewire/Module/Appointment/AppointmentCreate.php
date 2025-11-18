@@ -49,7 +49,7 @@ class AppointmentCreate extends Component
     {
         $appointment = Appointment::create([
             'subscriberId' => $this->subscriberId,
-            'consultationStatus' => ConsultationStatusEnum::CANCELLED->value,
+            'consultationStatus' => ConsultationStatusEnum::PENDING->value,
             'weight' => $this->weight
         ]);
 

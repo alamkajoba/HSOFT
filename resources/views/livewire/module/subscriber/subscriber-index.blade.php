@@ -62,7 +62,6 @@
                                         </button>
 
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <li><a class="dropdown-item" href="#">Details</a></li>
                                             <li><a class="dropdown-item" href="#">Modifier</a></li>
                                             <li><a class="dropdown-item" href="#">Dossier Médical</a></li>
                                             <li><hr class="dropdown-divider"></li>
@@ -73,7 +72,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="9" class="text-center text-danger">Oups! Aucun étudiant trouvé.</td>
+                                <td colspan="9" class="text-center text-danger">Oups! Aucun(e) abonné(e) trouvé.</td>
                             </tr>
                         @endforelse
                     </tbody>

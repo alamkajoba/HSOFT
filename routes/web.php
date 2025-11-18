@@ -2,6 +2,9 @@
 
 use App\Livewire\Module\Appointment\AppointmentCreate;
 use App\Livewire\Module\Appointment\AppointmentIndex;
+use App\Livewire\Module\Consultation\ConsultationCancelled;
+use App\Livewire\Module\Consultation\ConsultationCreate;
+use App\Livewire\Module\Consultation\ConsultationEnded;
 use App\Livewire\Module\HomPage\HomePage;
 use App\Livewire\Module\Subscriber\SubscriberIndex;
 use App\Livewire\Module\Subscriber\SubscriberCreate;
@@ -26,6 +29,13 @@ Route::middleware('auth')->prefix('subscriber')->name('subscriber.')->group(func
 Route::middleware('auth')->prefix('appointment')->name('appointment.')->group(function () {
     Route::get('index', AppointmentIndex::class)->name('index');
     Route::get('create', AppointmentCreate::class)->name('create');
+});
+
+#Consultation routes
+Route::middleware('auth')->prefix('consultation')->name('consultation.')->group(function () {
+    Route::get('create/{id}', ConsultationCreate::class)->name('create');
+    Route::get('cancelled', ConsultationCancelled::class)->name('cancelled');
+    Route::get('ended', ConsultationEnded::class)->name('ended');
 });
 
 #Home routes

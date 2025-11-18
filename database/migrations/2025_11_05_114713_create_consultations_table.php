@@ -14,11 +14,13 @@ return new class extends Migration
         Schema::create('consultations', function (Blueprint $table) {
             $table->id();
             $table->integer('subscriberId');
-            $table->string('reportedSymptoms');
-            $table->string('clinicFindings');
-            $table->string('temperature');
-            $table->string('heart rate');
-            $table->string('prescribedTreatment');
+            $table->string('symptomPatient')->nullable();
+            $table->string('PhysicalExam')->nullable();
+            $table->string('vitalSign')->nullable();
+            $table->string('labExam')->nullable()->default('NULL');
+            $table->string('radioExam')->nullable()->default('NULL');
+            $table->string('treatment');
+            $table->string('specialNote')->nullable()->default('NULL');
             $table->timestamps();
         });
     }

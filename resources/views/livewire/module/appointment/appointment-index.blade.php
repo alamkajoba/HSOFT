@@ -22,11 +22,11 @@
         </div>
     @endif
 
-    <!-- Header -->
+     <!-- Header -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">
             <i style="color:rgb(0, 0, 0);" class="fas fa-fw fa-users"></i>
-            Gestion des abonné(e)s
+            Liste des rendez-vous
         </h1>
         <div class="d-none d-sm-inline-block shadow-sm">
             <input wire:model.live="search" class="form-control" type="text" placeholder="Rechercher...">
@@ -53,7 +53,7 @@
                                 <td>{{ $appointments->subscriberId }}</td>
                                 <td>{{ $appointments->weight }}</td>
                                 @if ($appointments->consultationStatus === 'EN ATTENTE')
-                                    <td style="background-color: rgb(7, 7, 99)" class="text-white">{{ $appointments->consultationStatus }}</td>
+                                    <td style="background-color: rgb(1, 148, 33)" class="text-white">{{ $appointments->consultationStatus }}</td>
                                 @endif
 
                                 @if ($appointments->consultationStatus === 'EN COURS')
@@ -65,7 +65,7 @@
                                 @endif
 
                                 @if ($appointments->consultationStatus === 'TERMINEE')
-                                    <td style="background-color: rgb(1, 148, 33)" class="text-white">{{ $appointments->consultationStatus }}</td>
+                                    <td style="background-color: c" class="text-white">{{ $appointments->consultationStatus }}</td>
                                 @endif
                                 
                                 <td>{{ $appointments->weight }}</td>
@@ -77,18 +77,18 @@
                                         </button>
 
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <li><a class="dropdown-item" href="#">Details</a></li>
-                                            <li><a class="dropdown-item" href="#">Modifier</a></li>
-                                            <li><a class="dropdown-item" href="#">Dossier Médical</a></li>
+                                            <li><a class="dropdown-item" href="{{route('consultation.create', $appointments->id)}}">Consulter </a></li>
                                             <li><hr class="dropdown-divider"></li>
-                                            <li><a class="dropdown-item text-danger" href="#">Supprimer</a></li>
+                                            <li>
+                                                <button class="dropdown-item text-danger" wire:click="cancelAppointment({{$appointments->id}})">Annuler la consultation</button>
+                                            </li>
                                         </ul>
                                     </div>
                                 </td>
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="9" class="text-center text-danger">Oups! Aucun étudiant trouvé.</td>
+                                <td colspan="9" class="text-center text-danger">Oups! Aucun rendez-vous trouvé.</td>
                             </tr>
                         @endforelse
                     </tbody>
