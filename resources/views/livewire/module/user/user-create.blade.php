@@ -1,4 +1,4 @@
-<div class="card shadow mb-4">
+<div>
     @if (session()->has('success'))
         <div id="alert-success" 
             class="alert alert-success fade show text-center shadow-lg"
@@ -18,16 +18,15 @@
             {{ session('danger') }}
         </div>
     @endif
-        <div class="justify-content-between card-header py-3 d-flex">
-                <div>
-                    <h3>AJOUTER UN MEMBRE ADMINISTRATIF</h3>
-                </div> 
-                <div>
-                    {{-- <a href="#" style="background-color: rgb(7, 7, 99)" class="btn text-white">Liste</a> --}}
-                    <button style="background-color: rgb(7, 7, 99)" class="btn text-white">
-                        Voir la liste
-                    </button>
-                </div>
+
+        <!-- Header -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">
+                <i style="color:rgb(0, 0, 0);" class="fas fa-fw fa-users"></i>
+                Gestion du personnel administratif
+            </h1>
+            <div class="d-none d-sm-inline-block shadow-sm">
+            </div>
         </div>
         {{-- table --}}
         <div class="justify-content-between card-header">

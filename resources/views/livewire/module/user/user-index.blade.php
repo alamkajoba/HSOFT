@@ -1,4 +1,4 @@
-<div class="card shadow mb-4">
+<div>
     @if (session()->has('success'))
         <div id="alert-success" 
             class="alert alert-success fade show text-center shadow-lg"
@@ -8,28 +8,21 @@
             {{ session('success') }}
         </div>
     @endif
-    <div class="justify-content-between card-header py-3 d-flex">
-        <form method="GET"
-            class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-            <div>
-                <h3>LISTE DES AGENTS</h3>
-            </div>
-        </form>
+    <!-- Header -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">
+            <i style="color:rgb(0, 0, 0);" class="fas fa-fw fa-users"></i>
+            Gestion du personnel administratif
+        </h1>
+        <div class="d-none d-sm-inline-block shadow-sm">
+            <input wire:model.live="search" class="form-control" type="text" placeholder="Rechercher...">
+        </div>
     </div>
 
     {{-- table --}}
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100px" cellspacing="0">
-                {{-- searchfilter --}}
-                <div class="input-group col-lg-4 my-3">
-                    <input 
-                        wire:model.live="search" 
-                        type="text" 
-                        class="form-control bg-light small" 
-                        placeholder="Taper un nom..."
-                    />
-                </div>
                 
                     
                 <thead>

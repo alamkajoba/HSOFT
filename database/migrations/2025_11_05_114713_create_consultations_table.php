@@ -18,7 +18,9 @@ return new class extends Migration
             $table->string('PhysicalExam')->nullable();
             $table->string('vitalSign')->nullable();
             $table->string('labExam')->nullable()->default('NULL');
+            $table->string('labResult')->nullable();
             $table->string('radioExam')->nullable()->default('NULL');
+            $table->string('labResult')->nullable();
             $table->string('treatment');
             $table->string('specialNote')->nullable()->default('NULL');
             $table->timestamps();

@@ -12,7 +12,9 @@ class Consultation extends Model
         'PhysicalExam', //observation clinique
         'vitalSign',
         'labExam', 
+        'labResult', 
         'radioExam',
+        'radioResult',
         'treatment',
         'specialNote'
     ];

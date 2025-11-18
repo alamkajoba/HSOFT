@@ -23,7 +23,7 @@
 
             <!-- Heading -->
             <div style="color:white;" class="sidebar-heading">
-                Interface
+                Consultation et abonnees
             </div>
 
             {{--SUBSCRIBERS--}}
@@ -61,19 +61,61 @@
             </li>
 
 
-            {{--CONSULTATIONs--}}
+            {{--Pharmacy--}}
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseconsultation"
-                    aria-expanded="true" aria-controls="collapseconsultation">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePharmacie"
+                    aria-expanded="true" aria-controls="collapsePharmacie">
                     <i style="color:white;" class="fas fa-spinner"></i>
-                    <span style="color:white;"> Consultation</span>
+                    <span style="color:white;"> Pharmacie</span>
                 </a>
-                <div id="collapseconsultation" class="collapse" aria-labelledby="headingUtilities"
+                <div id="collapsePharmacie" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a style="color:black;" class="collapse-item" href="">Fil d'attente</a>
                         <a style="color:black;" class="collapse-item" href="">Consultations</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div style="color:white;" class="sidebar-heading">
+                Examens
+            </div>
+
+            {{--Radio--}}
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseRadio"
+                    aria-expanded="true" aria-controls="collapseRadio">
+                    <i style="color:white;" class="fas fa-spinner"></i>
+                    <span style="color:white;"> Radiologie</span>
+                </a>
+                <div id="collapseRadio" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a style="color:black;" class="collapse-item" href="">Fil d'attente</a>
+                        <a style="color:black;" class="collapse-item" href="">Tests finis</a>
+                    </div>
+                </div>
+            </li>
+
+            {{--Labo--}}
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLabo"
+                    aria-expanded="true" aria-controls="collapseLabo">
+                    <i style="color:white;" class="fas fa-spinner"></i>
+                    <span style="color:white;"> Labo</span>
+                </a>
+                <div id="collapseLabo" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a style="color:black;" class="collapse-item" href="">Fil d'attente</a>
+                        <a style="color:black;" class="collapse-item" href="">Tests finis</a>
                     </div>
                 </div>
             </li>
