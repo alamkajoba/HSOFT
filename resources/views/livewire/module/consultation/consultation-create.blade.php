@@ -34,6 +34,29 @@
 
 
     <div class="justify-content-between card-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <a 
+                        style="background-color: rgb(1, 148, 33)" 
+                        class="btn text-white py-2 my-3"
+                        data-bs-toggle="modal" 
+                        data-bs-target="#laboModal">
+                        Demander un examen de labo
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <a 
+                        style="background-color: rgb(1, 148, 33)" 
+                        class="btn text-white py-2 my-3"
+                        data-bs-toggle="modal" 
+                        data-bs-target="#radioModal">
+                        Demander un examen de radio
+                    </a>
+                </div>
+            </div>
+        </div>
+
         <form wire:submit="submitConsultation">
             @csrf
             
@@ -73,27 +96,6 @@
                     </div>
 
                     <div class="col-md-6">
-                        <label for="">Examens labo</label>
-                        <textarea 
-                            class="form-control"
-                            type="textarea"
-                            placeholder=""
-                            wire:model="labExam" 
-                            cols="30">
-
-                        </textarea>
-
-
-                        <label for="">Examens radio</label>
-                        <textarea 
-                            class="form-control"
-                            type="textarea"
-                            placeholder=""
-                            wire:model="radioExam" 
-                            cols="30">
-
-                        </textarea>
-
                         <label for="">Traitement</label>
                         <textarea 
                             class="form-control"
@@ -123,5 +125,68 @@
             </div>
         </form>
     </div>  
+
+
+
+
+
+    <!-- Modal Request exams -->
+    <div class="modal fade" id="laboModal" tabindex="-1" aria-labelledby="laboModalLabel" aria-hidden="true" wire:ignore.self>
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-0">
+                <div style="background-color: rgb(7, 7, 99)" class="modal-header text-white rounded-0">
+                    <h5 class="modal-title" id="laboModalLabel">Examen de labo pour :</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                </div>
+                <div class="modal-body">
+                    <label for="">Type d'examen</label>
+                        <textarea 
+                            class="form-control"
+                            type="textarea"
+                            placeholder=""
+                            wire:model="radio" 
+                            cols="30"
+                            rows="6">
+
+                        </textarea>
+                    </p>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button wire:click="" style="background-color: rgb(7, 7, 99)" class="btn text-white" data-bs-dismiss="modal">Demander</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ModalEnd -->
+    <!-- Modal Request exams -->
+    <div class="modal fade" id="radioModal" tabindex="-1" aria-labelledby="radioModalLabel" aria-hidden="true" wire:ignore.self>
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-0">
+                <div style="background-color: rgb(7, 7, 99)" class="modal-header text-white rounded-0">
+                    <h5 class="modal-title" id="radioModalLabel">Examen de radio pour :</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                </div>
+                <div class="modal-body">
+                    <label for="">Type d'examen</label>
+                        <textarea 
+                            class="form-control"
+                            type="textarea"
+                            placeholder=""
+                            wire:model="radio" 
+                            cols="30" 
+                            rows="6">
+
+                        </textarea>
+                    </p>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button wire:click="" style="background-color: rgb(7, 7, 99)" class="btn text-white" data-bs-dismiss="modal">Demander</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ModalEnd -->
 </div>
         

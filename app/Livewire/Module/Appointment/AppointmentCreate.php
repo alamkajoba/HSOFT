@@ -16,7 +16,7 @@ class AppointmentCreate extends Component
     public $search = '';
     public $itemsSubscriber = [];
     public $selectedSubscriber = [null];
-    public $subscriberId;
+    public $subscriber_id;
     public $weight;
 
 
@@ -39,7 +39,7 @@ class AppointmentCreate extends Component
         // Sélectionne un élément
         $this->selectedSubscriber = Subscriber::find($itemId)->toArray();
         $this->search = $this->selectedSubscriber['middleName'].' '.$this->selectedSubscriber['lastName'].' '.$this->selectedSubscriber['firstName'];
-        $this->subscriberId = $this->selectedSubscriber['id'];
+        $this->subscriber_id = $this->selectedSubscriber['id'];
         $this->itemsSubscriber = []; // Vide les suggestions
 
     }
@@ -48,7 +48,7 @@ class AppointmentCreate extends Component
     public function appointmentCreate()
     {
         $appointment = Appointment::create([
-            'subscriberId' => $this->subscriberId,
+            'subscriber_id' => $this->subscriber_id,
             'consultationStatus' => ConsultationStatusEnum::PENDING->value,
             'weight' => $this->weight
         ]);

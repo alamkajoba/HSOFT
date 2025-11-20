@@ -26,7 +26,7 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">
             <i style="color:rgb(0, 0, 0);" class="fas fa-fw fa-users"></i>
-            Gestion des abonné(e)s
+            Liste des abonné(e)s
         </h1>
         <div class="d-none d-sm-inline-block shadow-sm">
             <input wire:model.live="search" class="form-control" type="text" placeholder="Rechercher...">
@@ -35,8 +35,8 @@
 
     <!-- Table -->
     <div class="card-body">
-        <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%">
+        <div class="table-responsive ">
+                <table class="table table-bordered" id="dataTable" width="100%" >
                     <thead style="background-color: rgb(7, 7, 99)" class="text-white">
                         <tr>
                             <th>Nom</th>
@@ -44,12 +44,12 @@
                             <th>Prénom</th>
                             <th>Matricule</th>
                             <th>affectation</th>
-                            <th>Actions</th>
+                            <th colspan="3">Actions</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody >
                         @forelse ($subscriber as $subscribers)
-                            <tr>
+                            <tr >
                                 <td>{{ $subscribers->middleName }}</td>
                                 <td>{{ $subscribers->lastName }}</td>
                                 <td>{{ $subscribers->firstName }}</td>

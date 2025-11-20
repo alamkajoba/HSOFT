@@ -14,10 +14,16 @@ return new class extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
-            $table->integer('subscriberId');
+            $table->unsignedBigInteger('subscriber_id');
             $table->float('weight');
             $table->enum('consultationStatus', ConsultationStatusEnum::values());
             $table->timestamps();
+
+            //foreign key
+            $table->foreign('subscriber_id')
+                    ->references('id')
+                    ->on('subscribers')
+                    ->onDelete('cascade');
         });
     }
 

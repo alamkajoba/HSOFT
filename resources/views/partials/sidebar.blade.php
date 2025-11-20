@@ -138,21 +138,15 @@
                 <div id="collapseLabo" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        @can('peut créer un rendez-vous')
-                            <a style="color:black;" class="collapse-item" href="{{ route('laboratory.index')}}">
-                                Examens en attente
-                            </a>
-                        @endcan
-                        @can('peut créer un rendez-vous')
-                            <a style="color:black;" class="collapse-item" href="{{ route('laboratory.ended')}}">
-                                Examens finis
-                            </a>
-                        @endcan
-                        @can('peut créer un rendez-vous')
-                            <a style="color:black;" class="collapse-item" href="{{ route('laboratory.cancelled')}}">
-                                Examens anulés
-                            </a>
-                        @endcan
+                        <a style="color:black;" class="collapse-item" href="">
+                            Examens en attente
+                        </a>
+                        <a style="color:black;" class="collapse-item" href="">
+                            Examens finis
+                        </a>
+                        <a style="color:black;" class="collapse-item" href="">
+                            Examens anulés
+                        </a>
                     </div>
                 </div>
             </li>
@@ -177,7 +171,7 @@
                 <div id="collapseAfter" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a style="color:black;" class="collapse-item" href="{{ route('laboratory.index')}}">Fil d'attente</a>
+                        <a style="color:black;" class="collapse-item" href="">Fil d'attente</a>
                     </div>
                 </div>
             </li>

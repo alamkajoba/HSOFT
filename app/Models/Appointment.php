@@ -7,8 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class Appointment extends Model
 {
     protected $fillable = [
-        'subscriberId',
+        'subscriber_id',
         'weight',
         'consultationStatus'
     ];
+
+
+    //Realationship
+    public function subscriber()
+    {
+        return $this->belongTo(Subscriber::class);
+    }
 }

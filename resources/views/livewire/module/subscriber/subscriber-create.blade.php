@@ -36,6 +36,9 @@
                             placeholder=""
                             wire:model="middleName"
                         >
+                        @error('middleName')
+                            <span class="text-danger">Verifiez ce champ</span>
+                        @enderror
 
                         <label for="lastName">Postnom</label>
                         <input 
@@ -46,6 +49,9 @@
                             placeholder=""
                             wire:model="lastName"
                         >
+                        @error('lastName')
+                            <span class="text-danger">Verifiez ce champ</span>
+                        @enderror
 
                         <label for="firstName">Prénom</label>
                         <input 
@@ -56,6 +62,9 @@
                             placeholder=""
                             wire:model="firstName"
                         >
+                        @error('firstName')
+                            <span class="text-danger">Verifiez ce champ</span>
+                        @enderror
 
                         <label for="gender">Genre</label>
                         <select wire:model="gender" id="gender" class="form-control">
@@ -64,6 +73,9 @@
                                 <option value="{{ $gender }}">{{ $gender }}</option>
                             @endforeach
                         </select>
+                        @error('gender')
+                            <span class="text-danger">Verifiez ce champ</span>
+                        @enderror
 
                         <label for="bloodGroup">Groupe sanguin</label>
                         <select wire:model="bloodGroup" id="bloodGroup" class="form-control">
@@ -72,6 +84,9 @@
                                 <option value="{{ $bloodGroup }}">{{ $bloodGroup }}</option>
                             @endforeach
                         </select>
+                        @error('bloodGroup')
+                            <span class="text-danger">Verifiez ce champ</span>
+                        @enderror
 
                         <label for="birthDate">Date de naissance</label>
                         <input 
@@ -82,6 +97,9 @@
                             placeholder=""
                             wire:model="birthDate"
                         >
+                        @error('birthDate')
+                            <span class="text-danger">Verifiez ce champ</span>
+                        @enderror
 
                         <label for="birthTown">Lieu de naissance</label>
                         <input 
@@ -92,6 +110,9 @@
                             placeholder=""
                             wire:model="birthTown"
                         >
+                        @error('birthTown')
+                            <span class="text-danger">Verifiez ce champ</span>
+                        @enderror
                     </div>
 
                     <div class="col-md-6">
@@ -105,6 +126,9 @@
                             placeholder=""
                             wire:model="matricule"
                         >
+                        @error('matricule')
+                            <span class="text-danger">Verifiez ce champ</span>
+                        @enderror
 
                         <label for="type">Type d'abonnement</label>
                         <select wire:model="type" id="type" class="form-control">
@@ -113,6 +137,9 @@
                                 <option value="{{ $type }}">{{ $type }}</option>
                             @endforeach
                         </select>
+                        @error('type')
+                            <span class="text-danger">Verifiez ce champ</span>
+                        @enderror
 
                         <label for="affectation">Affectation (Ville)</label>
                         <input 
@@ -123,6 +150,9 @@
                             placeholder=""
                             wire:model="affectation"
                         >
+                        @error('affectation')
+                            <span class="text-danger">Verifiez ce champ</span>
+                        @enderror
 
                         <label for="address">Adresse</label>
                         <input 
@@ -133,6 +163,9 @@
                             placeholder=""
                             wire:model="address"
                         >
+                        @error('address')
+                            <span class="text-danger">Verifiez ce champ</span>
+                        @enderror
 
                         <label for="number">Contact</label>
                         <input 
@@ -143,6 +176,9 @@
                             placeholder="ex: +243 992 700 754"
                             wire:model="number"
                         >
+                        @error('number')
+                            <span class="text-danger">Verifiez ce champ</span>
+                        @enderror
 
                         
                     </div>
