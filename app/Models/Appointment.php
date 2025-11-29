@@ -8,14 +8,20 @@ class Appointment extends Model
 {
     protected $fillable = [
         'subscriber_id',
+        'user_id',
         'weight',
-        'consultationStatus'
+        'appointmentStatus'
     ];
 
 
     //Realationship
     public function subscriber()
     {
-        return $this->belongTo(Subscriber::class);
+        return $this->belongsTo(Subscriber::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

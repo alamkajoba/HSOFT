@@ -13,7 +13,24 @@ return new class extends Migration
     {
         Schema::create('laboratories', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('consultation_id');
+            $table->unsignedBigInteger('user_id');
+
+            $table->string('examRequested');
+            $table->string('result');
+            $table->string('specialNote')->nullable()->default('NULL');
             $table->timestamps();
+
+            //foreign key
+            $table->foreign('consultation_id')
+                    ->references('id')
+                    ->on('consultations')
+                    ->onDelete('cascade');
+
+            $table->foreign('user_id')
+                    ->references('id')
+                    ->on('users')
+                    ->onDelete('cascade');
         });
     }
 

@@ -5,6 +5,7 @@ namespace App\Livewire\Module\Appointment;
 use App\Enums\ConsultationStatusEnum;
 use App\Models\Appointment;
 use App\Models\Subscriber;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
@@ -47,9 +48,12 @@ class AppointmentCreate extends Component
     //Submit Appointment
     public function appointmentCreate()
     {
+        $id = Auth::id();
+
         $appointment = Appointment::create([
             'subscriber_id' => $this->subscriber_id,
-            'consultationStatus' => ConsultationStatusEnum::PENDING->value,
+            'user_id' => $id,
+            'appointmentStatus' => ConsultationStatusEnum::PENDING->value,
             'weight' => $this->weight
         ]);
 

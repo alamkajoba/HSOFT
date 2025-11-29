@@ -50,11 +50,11 @@
                     <tbody>
                         @forelse ($appointment as $appointments)
                             <tr>
-                                <td>{{ $appointments->middleName }} {{ $appointments->lastName }} {{ $appointments->firstName }}</td>
-                                <td>{{ $appointments->weight }}</td>
-                                <td style="background-color: rgb(1, 148, 33)" class="text-white">{{ $appointments->consultationStatus }}</td>
-                                <td>{{ $appointments->weight }}</td>
-                                <td>{{ $appointments->weight }}</td>
+                                <td>{{ $appointments->subscriber->middleName }} {{ $appointments->subscriber->lastName }} {{ $appointments->subscriber->firstName }}</td>
+                                <td>{{ $appointments->weight }} Kg</td>
+                                <td >{{ $appointments->subscriber->matricule }}</td>
+                                <td>{{ $appointments->subscriber->affectation }}</td>
+                                <td style="background-color: rgb(1, 148, 33)" class="text-white">{{ $appointments->appointmentStatus }}</td>
                                 <td>
                                     <div class="dropdown">
                                         <button class="btn text-white dropdown-toggle" style="background-color: rgb(7, 7, 99)" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
@@ -62,7 +62,7 @@
                                         </button>
 
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <li><a class="dropdown-item" href="{{route('consultation.create', $appointments->id)}}">Consulter </a></li>
+                                            <li><a class="dropdown-item" href="{{route('consultation.create', $appointments->id )}}">Consulter </a></li>
                                             <li><hr class="dropdown-divider"></li>
                                             <li>
                                                 <button class="dropdown-item text-danger" wire:click="cancelAppointment({{$appointments->id}})">Annuler la consultation</button>

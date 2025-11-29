@@ -15,19 +15,26 @@ return new class extends Migration
     {
         Schema::create('consultations', function (Blueprint $table) {
             $table->id();
-            $table->integer('subscriberId');
+            $table->unsignedBigInteger('appointment_id');
+            $table->unsignedBigInteger('user_id');
+
             $table->string('symptomPatient');
             $table->string('PhysicalExam');
             $table->string('vitalSign')->nullable();
-            $table->string('labExam')->nullable()->default('NULL');
-            $table->string('labResult')->nullable();
-            $table->string('radioExam')->nullable()->default('NULL');
-            $table->string('radioResult')->nullable();
             $table->string('treatment')->nullable();
             $table->string('specialNote')->nullable()->default('NULL');
-            $table->enum('LabExamStatusEnum', ConsultationStatusEnum::cases());
-            //$table->string('RadioExamStatusEnum');
             $table->timestamps();
+
+            //foreign key
+            $table->foreign('appointment_id')
+                    ->references('id')
+                    ->on('appointments')
+                    ->onDelete('cascade');
+
+            $table->foreign('user_id')
+                    ->references('id')
+                    ->on('users')
+                    ->onDelete('cascade');
         });
     }
 

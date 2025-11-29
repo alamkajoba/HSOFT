@@ -3,7 +3,7 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">
             <i style="color:rgb(0, 0, 0);" class="fas fa-fw fa-users"></i>
-            Gestion des abonné(e)s
+            Gestion des abonné(e)s 
         </h1>
         <div>
             <a href="{{ route('subscriber.index')}}" style="background-color: rgb(7, 7, 99)" class="btn text-white">Voir la liste</a>
@@ -140,7 +140,7 @@
                         @error('type')
                             <span class="text-danger">Verifiez ce champ</span>
                         @enderror
-
+                        
                         <label for="affectation">Affectation (Ville)</label>
                         <input 
                             required

@@ -138,23 +138,25 @@
                     <h5 class="modal-title" id="laboModalLabel">Examen de labo pour :</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fermer"></button>
                 </div>
-                <div class="modal-body">
-                    <label for="">Type d'examen</label>
-                        <textarea 
-                            class="form-control"
-                            type="textarea"
-                            placeholder=""
-                            wire:model="radio" 
-                            cols="30"
-                            rows="6">
+                <form wire:submit="submitLaboratory">
+                    <div class="modal-body">
+                        <label for="">Type d'examen</label>
+                            <textarea 
+                                class="form-control"
+                                type="textarea"
+                                placeholder=""
+                                wire:model="examRequest" 
+                                cols="30"
+                                rows="6">
 
-                        </textarea>
-                    </p>
-                </div>
-                <div class="modal-footer justify-content-between">
-                    <button class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                    <button wire:click="" style="background-color: rgb(7, 7, 99)" class="btn text-white" data-bs-dismiss="modal">Demander</button>
-                </div>
+                            </textarea>
+                        </p>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                        <button type="submit" style="background-color: rgb(7, 7, 99)" class="btn text-white" data-bs-dismiss="modal">Demander</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

@@ -48,7 +48,7 @@ class SubscriberCreate extends Component
     #[Validate('required|min:3|max:100|regex:/^[\pL\pN\s,\.\-#\/]+$/u')]
     public $address = '';
 
-    #[Validate('required|min:3|max:100|regex:/^[\pL\pN\s,\.\-#\/]+$/u')]
+    #[Validate('min:3|max:100|regex:/^[\pL\pN\s,\.\-#\/]+$/u')]
     public $affectation = '';
 
     #[Validate('nullable|regex:/^[0-9\s\-\+\(\)]+$/|min:8|max:20')]

@@ -55,7 +55,10 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseappointment"
                     aria-expanded="true" aria-controls="collapseappointment">
                     <i style="color:white;" class="fas fa-thermometer-empty"></i>
-                    <span style="color:white;">Consultation</span>
+                    <span style="color:white">Consultation</span> 
+                    <span style="background-color:red" class="badge">
+                        {{App\Models\Appointment::where('appointmentStatus', App\Enums\ConsultationStatusEnum::PENDING->value)->count()}}
+                    </span>
                 </a>
                 <div id="collapseappointment" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">

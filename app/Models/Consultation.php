@@ -7,17 +7,23 @@ use Illuminate\Database\Eloquent\Model;
 class Consultation extends Model
 {
     protected $fillable = [
-        'subscriberId',
+        'appointment_id',
+        'user_id',
         'symptomPatient',
         'PhysicalExam', //observation clinique
         'vitalSign',
-        'labExam', 
-        'labResult', 
-        'radioExam',
-        'radioResult',
         'treatment',
         'specialNote',
-        'LabExamStatusEnum', //Status of Labroom
-        //'RadioExamStatusEnum' //Status of Labroom
     ];
+
+    //Realationship
+    public function appointment()
+    {
+        return $this->belongTo(Appointment::class);
+    }
+
+    public function user()
+    {
+        return $this->belongTo(User::class);
+    }
 }

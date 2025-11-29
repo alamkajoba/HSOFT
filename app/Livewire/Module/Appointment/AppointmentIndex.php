@@ -27,7 +27,7 @@ class AppointmentIndex extends Component
     {
         $catch = Appointment::findOrFail($id);
         $catch->update([
-            'consultationStatus' => ConsultationStatusEnum::CANCELLED->value,
+            'appointmentStatus' => ConsultationStatusEnum::CANCELLED->value,
         ]);
 
         session()->flash('success', "Le rendez-vous consultation a été annulé.");
@@ -36,11 +36,18 @@ class AppointmentIndex extends Component
 
     public function render()
     {
-        $appointment = Appointment::where('firstName', 'like', '%' . $this->search . '%')
-                                        ->where('consultationStatus', ConsultationStatusEnum::PENDING->value);
+        $appointment = Appointment::with('subscriber')
+            ->whereHas('subscriber', function ($q) {
+                $q->where('firstName', 'like', '%' . $this->search . '%')
+                    ->orwhere('lastName', 'like', '%' . $this->search . '%')
+                    ->orwhere('middleName', 'like', '%' . $this->search . '%');
+            })
+            ->where('appointmentStatus', ConsultationStatusEnum::PENDING->value)
+            ->paginate(5);
+
                                         
         return view('livewire.module.appointment.appointment-index',[
-            'appointment' => $appointment->paginate(5),
+            'appointment' => $appointment,
         ]);
     }
 }
