@@ -42,18 +42,22 @@
                             <th>Nom Postnom Prenom</th>
                             <th>Matricule</th>
                             <th>Traitement</th>
-                            <th>Note</th>
                             <th>Date et heure</th>
+                            <th>Statut</th>
                         </tr>
                     </thead>
                     <tbody>
                         @forelse ($consultation as $consultations)
                             <tr>
-                                <td>{{ $consultations->subscriberId }}</td>
-                                <td>{{ $consultations->subscriberId }}</td>
-                                <td>{{ $consultations->treatment }}</td>
-                                <td>{{ $consultations->specialNote }}</td>
-                                <td>{{ $consultations->created_at }}</td>
+                                <td>
+                                    {{ $consultations->subscriber->middleName }}
+                                    {{ $consultations->subscriber->lastName }}
+                                    {{ $consultations->subscriber->firstName }}
+                                </td>
+                                <td>{{ $consultations->subscriber->matricule }}</td>
+                                <td>{{ $consultations->consultation->treatment }}</td>
+                                <td>{{ $consultations->updated_at }}</td>
+                                <td style="background-color: rgb(1, 148, 33)" class="text-white">{{ $consultations->appointmentStatus }}</td>
                             </tr>
                         @empty
                             <tr>

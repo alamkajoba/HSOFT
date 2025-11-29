@@ -19,11 +19,11 @@ class Consultation extends Model
     //Realationship
     public function appointment()
     {
-        return $this->belongTo(Appointment::class);
+        return $this->belongsTo(Appointment::class);
     }
 
     public function user()
     {
-        return $this->belongTo(User::class);
+        return $this->belongsTo(User::class);
     }
 }

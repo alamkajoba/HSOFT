@@ -24,11 +24,11 @@ class LaboratoryIndex extends Component
 
     public function render()
     {
-        $lab = Consultation::where('firstName', 'like', '%' . $this->search . '%')
-                                    ->where('LabExamStatusEnum',ConsultationStatusEnum::PENDING->value);
+        $lab = Laboratoty::where('laboStatus', ConsultationStatusEnum::PENDING->value)
+            ->paginate(5);
 
         return view('livewire.module.laboratory.laboratory-index',[
-            'lab' => $lab->paginate(5),
+            'lab' => $lab,
         ]);
     }
 }

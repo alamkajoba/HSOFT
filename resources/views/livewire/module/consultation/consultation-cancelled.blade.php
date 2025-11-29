@@ -36,10 +36,9 @@
     <!-- Table -->
     <div class="card-body">
         <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%">
+            <table class="table table-bordered" id="dataTable" width="100%">
                     <thead style="background-color: rgb(7, 7, 99)" class="text-white">
                         <tr>
-                            <th>Id</th>
                             <th>Nom Postnom Prenom</th>
                             <th>Matricule</th>
                             <th>Date et heure</th>
@@ -47,13 +46,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($appointment as $appointments)
+                        @forelse ($consultation as $consultations)
                             <tr>
-                                <td>{{ $appointments->subscriberId }}</td>
-                                <td>{{ $appointments->weight }}</td>
-                                <td style="background-color: rgb(145, 0, 0)" class="text-white">{{ $appointments->consultationStatus }}</td>
-                                <td>{{ $appointments->weight }}</td>
-                                <td>{{ $appointments->weight }}</td>
+                                <td>
+                                    {{ $consultations->subscriber->middleName }}
+                                    {{ $consultations->subscriber->lastName }}
+                                    {{ $consultations->subscriber->firstName }}
+                                </td>
+                                <td>{{ $consultations->subscriber->matricule }}</td>
+                                <td>{{ $consultations->created_at }}</td>
+                                <td style="background-color: rgb(255, 0, 0)" class="text-white">{{ $consultations->appointmentStatus }}</td>
                             </tr>
                         @empty
                             <tr>
@@ -66,7 +68,7 @@
 
             <!-- Pagination -->
             <div class="mt-4">
-                {{ $appointment->links() }}
+                {{ $consultation->links() }}
             </div>
     </div>
 </div>

@@ -25,11 +25,18 @@ class ConsultationCancelled extends Component
     public function render()
     {
 
-        $appointment = Appointment::where('firstName', 'like', '%' . $this->search . '%')
-                                        ->where('consultationStatus', ConsultationStatusEnum::CANCELLED->value);
+        $consultation = Appointment::with(['subscriber', 'consultation'])
+            //Search in subscribers
+            ->whereHas('subscriber', function ($q) {
+                $q->where('firstName', 'like', '%' . $this->search . '%')
+                    ->orwhere('lastName', 'like', '%' . $this->search . '%')
+                    ->orwhere('middleName', 'like', '%' . $this->search . '%');
+            })
+            ->where('appointmentStatus', ConsultationStatusEnum::CANCELLED->value)
+            ->paginate(5);
 
         return view('livewire.module.consultation.consultation-cancelled',[
-            'appointment' => $appointment->latest()->paginate(5),
+            'consultation' => $consultation,
         ]);
     }
 }

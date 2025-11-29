@@ -43,22 +43,7 @@
                             <tr>
                                 <td>{{ $appointments->subscriberId }}</td>
                                 <td>{{ $appointments->weight }}</td>
-                                @if ($appointments->consultationStatus === 'EN ATTENTE')
-                                    <td style="background-color: rgb(1, 148, 33)" class="text-white">{{ $appointments->consultationStatus }}</td>
-                                @endif
-
-                                @if ($appointments->consultationStatus === 'EN COURS')
-                                    <td style="background-color: rgb(168, 166, 2)" class="text-white">{{ $appointments->consultationStatus }}</td>
-                                @endif
-
-                                @if ($appointments->consultationStatus === 'ANULEE')
-                                    <td style="background-color: rgb(145, 0, 0)" class="text-white">{{ $appointments->consultationStatus }}</td>
-                                @endif
-
-                                @if ($appointments->consultationStatus === 'TERMINEE')
-                                    <td style="background-color: c" class="text-white">{{ $appointments->consultationStatus }}</td>
-                                @endif
-                                
+                                <td style="background-color: rgb(1, 148, 33)" class="text-white">{{ $appointments->consultationStatus }}</td>     
                                 <td>{{ $appointments->weight }}</td>
                                 <td>{{ $appointments->weight }}</td>
                                 <td>

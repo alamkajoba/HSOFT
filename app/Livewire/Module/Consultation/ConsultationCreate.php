@@ -92,7 +92,8 @@ class ConsultationCreate extends Component
             'appointment_id' => $this->appointment_id, 
             'examRequested' => '-', 
             'result' => '-', 
-            'specialNote' => '-'
+            'specialNote' => '-',
+            'laboStatus' => ConsultationStatusEnum::PENDING->value
         ]);
         session()->flash('success', "Consultation finie");
         return redirect()->to(route('appointment.create', $this->appointment_id));

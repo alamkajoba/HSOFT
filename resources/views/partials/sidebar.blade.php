@@ -56,9 +56,6 @@
                     aria-expanded="true" aria-controls="collapseappointment">
                     <i style="color:white;" class="fas fa-thermometer-empty"></i>
                     <span style="color:white">Consultation</span> 
-                    <span style="background-color:red" class="badge">
-                        {{App\Models\Appointment::where('appointmentStatus', App\Enums\ConsultationStatusEnum::PENDING->value)->count()}}
-                    </span>
                 </a>
                 <div id="collapseappointment" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
@@ -66,6 +63,9 @@
                         @can('peut voir un rendez-vous')
                             <a style="color:black;" class="collapse-item" href="{{route('appointment.index')}}">
                                 Fil d'attente
+                                <span style="background-color:red" class="badge">
+                                    {{App\Models\Appointment::where('appointmentStatus', App\Enums\ConsultationStatusEnum::PENDING->value)->count()}}
+                                </span>
                             </a>
                         @endcan
                         @can('peut créer un rendez-vous')
@@ -143,6 +143,9 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a style="color:black;" class="collapse-item" href="">
                             Examens en attente
+                            <span style="background-color:red" class="badge">
+                                {{App\Models\Appointment::where('appointmentStatus', App\Enums\ConsultationStatusEnum::PENDING->value)->count()}}
+                            </span>
                         </a>
                         <a style="color:black;" class="collapse-item" href="">
                             Examens finis

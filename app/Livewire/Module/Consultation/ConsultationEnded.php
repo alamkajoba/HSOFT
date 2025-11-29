@@ -26,10 +26,18 @@ class ConsultationEnded extends Component
     public function render()
     {
 
-        $consultation = Consultation::where('firstName', 'like', '%' . $this->search . '%');
+        $consultation = Appointment::with(['subscriber', 'consultation'])
+            //Search in subscribers
+            ->whereHas('subscriber', function ($q) {
+                $q->where('firstName', 'like', '%' . $this->search . '%')
+                    ->orwhere('lastName', 'like', '%' . $this->search . '%')
+                    ->orwhere('middleName', 'like', '%' . $this->search . '%');
+            })
+            ->where('appointmentStatus', ConsultationStatusEnum::DONE->value)
+            ->paginate(5);
 
         return view('livewire.module.consultation.consultation-ended',[
-            'consultation' => $consultation->latest()->paginate(5),
+            'consultation' => $consultation,
         ]);
     }
 }

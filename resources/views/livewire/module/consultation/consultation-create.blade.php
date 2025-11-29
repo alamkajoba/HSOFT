@@ -135,7 +135,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content rounded-0">
                 <div style="background-color: rgb(7, 7, 99)" class="modal-header text-white rounded-0">
-                    <h5 class="modal-title" id="laboModalLabel">Examen de labo pour :</h5>
+                    <h5 class="modal-title" id="laboModalLabel">Examen de labo pour :{{$infoSubscriber}}</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fermer"></button>
                 </div>
                 <form wire:submit="submitLaboratory">

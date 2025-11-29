@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\ConsultationStatusEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -19,6 +20,7 @@ return new class extends Migration
             $table->string('examRequested');
             $table->string('result');
             $table->string('specialNote')->nullable()->default('NULL');
+            $table->enum('laboStatus', ConsultationStatusEnum::values());
             $table->timestamps();
 
             //foreign key

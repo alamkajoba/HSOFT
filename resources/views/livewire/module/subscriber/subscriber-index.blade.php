@@ -39,9 +39,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" >
                     <thead style="background-color: rgb(7, 7, 99)" class="text-white">
                         <tr>
-                            <th>Nom</th>
-                            <th>Postnom</th>
-                            <th>Prénom</th>
+                            <th>Nom  Postnom  Prénom</th>
                             <th>Matricule</th>
                             <th>affectation</th>
                             <th colspan="3">Actions</th>
@@ -50,9 +48,11 @@
                     <tbody >
                         @forelse ($subscriber as $subscribers)
                             <tr >
-                                <td>{{ $subscribers->middleName }}</td>
-                                <td>{{ $subscribers->lastName }}</td>
-                                <td>{{ $subscribers->firstName }}</td>
+                                <td>
+                                    {{ $subscribers->middleName }}
+                                    {{ $subscribers->lastName }}
+                                    {{ $subscribers->firstName }}
+                                </td>
                                 <td>{{ $subscribers->matricule }}</td>
                                 <td>{{ $subscribers->affectation }}</td>
                                 <td>
