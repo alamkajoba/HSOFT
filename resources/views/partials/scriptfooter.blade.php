@@ -16,9 +16,12 @@
                 <div class="modal-body">Selectionnez "Deconnexion" Si vous êtes prèt pour abandonner la session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
-                    <a class="btn btn-danger" href="{{route('logout')}}">
-                        Deconnexion
-                    </a>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button class="btn btn-danger">
+                            Deconnexion
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
