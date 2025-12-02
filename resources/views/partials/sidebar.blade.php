@@ -207,6 +207,43 @@
                 </div>
             </li>
 
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers"
+                    aria-expanded="true" aria-controls="collapseUsers">
+                    <i style="color:white;" class="fas fa-fw fa-wrench"></i>
+                    <span style="color:white;">Gestion du personnel</span>
+                </a>
+                <div id="collapseUsers" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a style="color:black;" class="collapse-item" href="">Liste agent (dispensaire)</a>
+                        <a style="color:black;" class="collapse-item" href="">Ajouter un agent</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLabo"
+                    aria-expanded="true" aria-controls="collapseLabo">
+                    <i style="color:white;" class="fas fa-fw fa-wrench"></i>
+                    <span style="color:white;">Gestion Labo</span>
+                </a>
+                <div id="collapseLabo" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a style="color:black;" class="collapse-item" href="">Liste des examens disponible</a>
+                        <a style="color:black;" class="collapse-item" href="">Ajouter un agent</a>
+                    </div>
+                </div>
+            </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
