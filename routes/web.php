@@ -1,25 +1,32 @@
 <?php
 
-use App\Livewire\Module\Appointment\AppointmentCreate;
-use App\Livewire\Module\Appointment\AppointmentIndex;
-use App\Livewire\Module\Consultation\ConsultationCancelled;
-use App\Livewire\Module\Consultation\ConsultationCreate;
-use App\Livewire\Module\Consultation\ConsultationEnded;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+use App\Livewire\Module\User\UserIndex;
+use App\Livewire\Module\User\UserCreate;
+use App\Livewire\Module\User\UserUpdate;
 use App\Livewire\Module\HomPage\HomePage;
-use App\Livewire\Module\Laboratory\LaboratoryCancelled;
 use App\Livewire\Module\Laboratory\LaboratoryEnded;
 use App\Livewire\Module\Laboratory\LaboratoryIndex;
+use App\Livewire\Module\Subscriber\SubscriberIndex;
 use App\Livewire\Module\Laboratory\LaboratoryResult;
 use App\Livewire\Module\Permission\PermissionAssign;
-use App\Livewire\Module\Subscriber\SubscriberIndex;
 use App\Livewire\Module\Subscriber\SubscriberCreate;
 use App\Livewire\Module\Subscriber\SubscriberUpdate;
-use App\Livewire\Module\User\UserCreate;
-use App\Livewire\Module\User\UserIndex;
-use App\Livewire\Module\User\UserUpdate;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
+use App\Livewire\Module\Appointment\AppointmentIndex;
+use App\Livewire\Module\Appointment\AppointmentCreate;
+use App\Livewire\Module\Consultation\ConsultationEnded;
+use App\Livewire\Module\Laboratory\LaboratoryCancelled;
+use App\Livewire\Module\Consultation\ConsultationCreate;
+use App\Livewire\Module\Laboratory\AddLaboratoryExamIndex;
+use App\Livewire\Module\Consultation\ConsultationCancelled;
+use App\Livewire\Module\Laboratory\AddLaboratoryExamCreate;
+use App\Livewire\Module\Laboratory\AddLaboratoryExamUpdate;
+use App\Livewire\Module\Medicine\MedicineIndex;
+use App\Livewire\Module\Medicine\MedicineCreate;
+use App\Livewire\Module\Medicine\MedicineUpdate;
+use App\Livewire\Module\Medicine\MedicineApprov;
 
 Route::get('/', function () {
     return redirect()->route('login');
@@ -52,6 +59,17 @@ Route::middleware('auth')->prefix('laboratory')->name('laboratory.')->group(func
     Route::get('create', LaboratoryResult::class)->name('create');
     Route::get('ended', LaboratoryEnded::class)->name('ended');
     Route::get('cancelled', LaboratoryCancelled::class)->name('cancelled');
+    Route::get('addexam', AddLaboratoryExamCreate::class)->name('addexam');
+    Route::get('updateexam/{id}', AddLaboratoryExamUpdate::class)->name('updateexam');
+    Route::get('indexexam', AddLaboratoryExamIndex::class)->name('indexexam');
+});
+
+#Medicine routes
+Route::middleware('auth')->prefix('medicine')->name('medicine.')->group(function () {
+    Route::get('index', MedicineIndex::class)->name('index');
+    Route::get('create', MedicineCreate::class)->name('create');
+    Route::get('update/{id}', MedicineUpdate::class)->name('update');
+    Route::get('approv', MedicineApprov::class)->name('approv');
 });
 
 

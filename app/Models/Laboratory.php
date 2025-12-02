@@ -7,17 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 class Laboratory extends Model
 {
     protected $fillable = [
-        'user_id', 'consultation_id', 'examRequested', 'result', 'specialNote' , 'laboStatus'
+        'user_id', 'appointment_id', 'examRequested', 'result', 'specialNote' , 'laboStatus'
     ];
 
     //Realationship
-    public function consultaion()
+    public function appointment()
     {
-        return $this->belongTo(Consultation::class);
+        return $this->belongsTo(Appointment::class);
     }
 
     public function user()
     {
-        return $this->belongTo(User::class);
+        return $this->belongsTo(User::class);
     }
 }

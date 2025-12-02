@@ -9,6 +9,7 @@ use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithoutUrlPagination;
 use Livewire\WithPagination;
+use App\Models\Laboratory;
 
 #[Layout('layouts.app')]
 class LaboratoryIndex extends Component
@@ -24,7 +25,8 @@ class LaboratoryIndex extends Component
 
     public function render()
     {
-        $lab = Laboratoty::where('laboStatus', ConsultationStatusEnum::PENDING->value)
+        $lab = Laboratory::with('appointment')
+            ->where('laboStatus', ConsultationStatusEnum::PENDING->value)
             ->paginate(5);
 
         return view('livewire.module.laboratory.laboratory-index',[

@@ -138,14 +138,14 @@
                     <h5 class="modal-title" id="laboModalLabel">Examen de labo pour :{{$infoSubscriber}}</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fermer"></button>
                 </div>
-                <form wire:submit="submitLaboratory">
+                <form wire:submit.prevent="submitLaboratory">
                     <div class="modal-body">
                         <label for="">Type d'examen</label>
                             <textarea 
                                 class="form-control"
                                 type="textarea"
                                 placeholder=""
-                                wire:model="examRequest" 
+                                wire:model="examRequested" 
                                 cols="30"
                                 rows="6">
 

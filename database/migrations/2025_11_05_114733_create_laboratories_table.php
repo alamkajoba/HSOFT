@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('laboratories', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('consultation_id');
+            $table->unsignedBigInteger('appointment_id')->unique();
             $table->unsignedBigInteger('user_id');
 
             $table->string('examRequested');
@@ -24,9 +24,9 @@ return new class extends Migration
             $table->timestamps();
 
             //foreign key
-            $table->foreign('consultation_id')
+            $table->foreign('appointment_id')
                     ->references('id')
-                    ->on('consultations')
+                    ->on('appointments')
                     ->onDelete('cascade');
 
             $table->foreign('user_id')

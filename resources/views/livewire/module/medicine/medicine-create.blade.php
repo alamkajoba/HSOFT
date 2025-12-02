@@ -30,45 +30,28 @@
 
 
     <div class="justify-content-between card-header">
-        <form wire:submit="appointmentCreate()">
+        <form wire:submit="medicineCreate()">
             @csrf
             
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <label for="">Selectionner le nom de l'Abonne(é)</label>
+                        <label for="">Nom du produit</label>
                         <input 
                             class="form-control"
                             type="text"
                             placeholder=""
-                            wire:model.live="search"
-                            wire:keyup="searchSubscriber"
+                            wire:model="nameMedicine"
                         >
 
-                        @if (!empty($itemsSubscriber))
-                            <ul class="list-group mt-2">
-                                <h5>Resultat de la recherche :</h5>
-                                @forelse ($itemsSubscriber as $itemsSubscribers)
-                                    <a href="" class="list-group-item mb-2 flex bg-primary-200 hover:bg-primary-500"
-                                        wire:click.prevent="selectSubscriber({{$itemsSubscribers['id']}})">
-                                        {{ $itemsSubscribers['firstName'].' '. $itemsSubscribers['middleName'].' '. $itemsSubscribers['lastName'].' '.$itemsSubscribers['matricule']}}
-                                    </a>
-                                @empty
-                                    <div class="list-group-item mb-2 flex bg-danger-200">
-                                        Aucun(e) Abonné(e)
-                                    </div>
-                                @endforelse
-                            </ul>
-                        @endif
 
-
-                        <label for="">Prescription poids</label>
-                        <input 
-                            class="form-control"
-                            type="text"
-                            placeholder="poids en Kg"
-                            wire:model="weight"
-                        >
+                        <label for="">Selectionner une categorie</label>
+                        <select wire:model="category" id="category" class="form-control">
+                            <option>Selectionner...</option>
+                            @foreach ($this->categorys() as $category)
+                                <option value="{{ $category }}">{{ $category }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div>

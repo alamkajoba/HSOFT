@@ -17,19 +17,7 @@ class ConsultationCreate extends Component
 {
 
     #[Validate('required')]
-    public $symptomPatient;
-
-    #[Validate('required')]
-    public $PhysicalExam;
-
-    #[Validate('nullable')]
-    public $vitalSign;
-
-    #[Validate('nullable')]
-    public $treatment;
-
-    #[Validate('nullable')]
-    public $specialNote;
+    public $examRequested;
 
 
     //labo and radio
@@ -85,18 +73,26 @@ class ConsultationCreate extends Component
     //Laboratory request
     public function submitLaboratory()
     {
+        //lab must be unique 
+        $check = Laboratory::where('appointment_id', $this->appointment_id)->limit(1);
+
+        // if ($check) 
+        // {
+        //     session()->flash('danger', "Examen labo deja demandee pour le Patient");
+        //     return redirect()->to(route('consultation.create', $this->appointment_id));
+        // }
         $user_id = Auth::id();
 
         $lab = Laboratory::create([
             'user_id' => $user_id, 
             'appointment_id' => $this->appointment_id, 
-            'examRequested' => '-', 
+            'examRequested' => $this->examRequested, 
             'result' => '-', 
             'specialNote' => '-',
             'laboStatus' => ConsultationStatusEnum::PENDING->value
         ]);
-        session()->flash('success', "Consultation finie");
-        return redirect()->to(route('appointment.create', $this->appointment_id));
+        session()->flash('success', "Examen labo demande");
+        return redirect()->to(route('consultation.create', $this->appointment_id));
 
     }
 

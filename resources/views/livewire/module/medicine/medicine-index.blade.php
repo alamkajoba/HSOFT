@@ -39,37 +39,58 @@
                 <table class="table table-bordered" id="dataTable" width="100%">
                     <thead style="background-color: rgb(7, 7, 99)" class="text-white">
                         <tr>
-                            <th>Identité du patient</th>
-                            <th>Poids</th>
-                            <th>Statut de la consultation</th>
+                            <th>Nom du produit</th>
+                            <th>Categorie</th>
+                            <th>Quantite</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($appointment as $appointments)
+                        @forelse ($medicine as $medicines)
                             <tr>
-                                <td>{{ $appointments->subscriber->middleName }} {{ $appointments->subscriber->lastName }} {{ $appointments->subscriber->firstName }}</td>
-                                <td>{{ $appointments->weight }} Kg</td>
-                                <td style="background-color: rgb(1, 148, 33)" class="text-white">{{ $appointments->appointmentStatus }}</td>
+                                <td>{{ $medicines->nameMedicine }}</td>
+                                <td>{{ $medicines->category }}</td>
+
+                                {{-- Stock high --}}
+                                @if ($medicines->quantity >= 60)
+                                    <td class="text-white" style="background-color: rgb(0, 255, 42)">
+                                        ( {{ $medicines->quantity }} )Eleve
+                                    </td>
+
+                                {{-- Stock middle --}}
+                                @elseif ($medicines->quantity >= 30 && $medicines->quantity <= 59)
+                                    <td class="" style="background-color: rgb(235, 255, 51)">
+                                        ( {{ $medicines->quantity }} )Moyen
+                                    </td>
+
+                                {{-- Stock low --}}
+                                @elseif ($medicines->quantity >= 1 && $medicines->quantity <= 29)
+                                    <td class="" style="background-color: rgb(255, 123, 0)">
+                                        ( {{ $medicines->quantity }} )Faible
+                                    </td>
+
+                                {{-- Stock empty --}}
+                                @else
+                                    <td class="text-white" style="background-color: rgb(255, 0, 0)">
+                                        ( {{ $medicines->quantity }} )Epuisé
+                                    </td>
+                                @endif
+
+
                                 <td>
                                     <div class="dropdown">
-                                        <button class="btn text-white dropdown-toggle" style="background-color: rgb(7, 7, 99)" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Actions
+                                        <a href="" class="btn text-white" style="background-color: rgb(7, 7, 99)">
+                                            Modifier
+                                        </a>
+                                        <button class="btn text-white" style="background-color: rgb(137, 146, 2)">
+                                            Details
                                         </button>
-
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <li><a class="dropdown-item" href="{{route('consultation.create', $appointments->id )}}">Consulter </a></li>
-                                            <li><hr class="dropdown-divider"></li>
-                                            <li>
-                                                <button class="dropdown-item text-danger" wire:click="cancelAppointment({{$appointments->id}})">Annuler la consultation</button>
-                                            </li>
-                                        </ul>
                                     </div>
                                 </td>
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="9" class="text-center text-danger">Oups! Aucun rendez-vous trouvé.</td>
+                                <td colspan="9" class="text-center text-danger">Oups! Aucun médicament trouvé.</td>
                             </tr>
                         @endforelse
                     </tbody>
@@ -78,7 +99,7 @@
 
             <!-- Pagination -->
             <div class="mt-4">
-                {{ $appointment->links() }}
+                {{ $medicine->links() }}
             </div>
 
         <!-- Modal delete student -->

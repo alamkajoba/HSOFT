@@ -1,0 +1,31 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+use App\Enums\CategoryMedicineEnum;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('medicines', function (Blueprint $table) {
+            $table->id();
+            $table->string('nameMedicine');
+            $table->float('quantity');
+            $table->enum('category', CategoryMedicineEnum::values());
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('medicines');
+    }
+};

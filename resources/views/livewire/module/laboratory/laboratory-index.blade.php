@@ -41,7 +41,6 @@
                         <tr>
                             <th>Nom Postnom Prenom</th>
                             <th>Poids</th>
-                            <th>Matricule</th>
                             <th>Examen demandé</th>
                             <th>Actions</th>
                         </tr>
@@ -49,29 +48,20 @@
                     <tbody>
                         @forelse ($lab as $labs)
                             <tr>
-                                <td>{{ $labs->subscriberId }}</td>
-                                <td>{{ $labs->symptomPatient }}</td>
-                                <td>{{ $labs->PhysicalExam }}</td>
-                                <td>{{ $labs->vitalSign }}</td>
+                                <td>{{ $labs->appointment->subscriber->middleName }} {{ $labs->appointment->subscriber->lastName }} {{ $labs->appointment->subscriber->firstName }}</td>
+                                <td>{{ $labs->appointment->weight }}Kg</td>
+                                <td>{{ $labs->examRequested }}</td>
                                 <td>
                                     <div class="dropdown">
-                                        <button class="btn text-white dropdown-toggle" style="background-color: rgb(7, 7, 99)" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Actions
-                                        </button>
-
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <li><a class="dropdown-item" href="{{route('laboratory.create', $labs->id)}}">Poster resultats </a></li>
-                                            <li><hr class="dropdown-divider"></li>
-                                            <li>
-                                                <button class="dropdown-item text-danger" wire:click="cancelAppointment({{$labs->id}})">Annuler la consultation</button>
-                                            </li>
-                                        </ul>
+                                        <a class="btn text-white" style="background-color: rgb(7, 7, 99)" >
+                                            Publier resultat
+                                        </a>
                                     </div>
                                 </td>
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="9" class="text-center text-danger">Oups! Aucun rendez-vous trouvé.</td>
+                                <td colspan="9" class="text-center text-danger">Oups! Aucun examen en attente.</td>
                             </tr>
                         @endforelse
                     </tbody>

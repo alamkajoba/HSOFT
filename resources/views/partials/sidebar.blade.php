@@ -23,31 +23,8 @@
 
             <!-- Heading -->
             <div style="color:white;" class="sidebar-heading">
-                Consultation et abonnees
+                Consultations
             </div>
-
-            {{--SUBSCRIBERS--}}
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsesubscriber"
-                    aria-expanded="true" aria-controls="collapsesubscriber">
-                    <i style="color:white;" class="fas fa-fw fa-users"></i>
-                    <span style="color:white;">Gestion des abonné(e)s</span>
-                </a>
-                <div id="collapsesubscriber" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        @can('peut voir un abonée')
-                            <a style="color:black;" class="collapse-item" href="{{route('subscriber.index')}}">
-                                Liste des abonné(e)s
-                            </a>
-                        @endcan
-                        @can('peut créer un abonée')
-                            <a style="color:black;" class="collapse-item" href="{{route('subscriber.create')}}">
-                                Ajouter un abonné
-                            </a>
-                        @endcan
-                    </div>
-                </div>
-            </li>
 
             {{--APPOINTMENTS--}}
 
@@ -60,6 +37,11 @@
                 <div id="collapseappointment" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
+                        @can('peut créer un rendez-vous')
+                            <a style="color:black;" class="collapse-item" href="{{route('appointment.create')}}">
+                                Nouveau rendez-vous
+                            </a>
+                        @endcan
                         @can('peut voir un rendez-vous')
                             <a style="color:black;" class="collapse-item" href="{{route('appointment.index')}}">
                                 Fil d'attente
@@ -68,14 +50,9 @@
                                 </span>
                             </a>
                         @endcan
-                        @can('peut créer un rendez-vous')
-                            <a style="color:black;" class="collapse-item" href="{{route('appointment.create')}}">
-                                Ajouter un nouveau
-                            </a>
-                        @endcan
                         @can('peut voir une consultation finie')
                             <a style="color:black;" class="collapse-item" href="{{route('consultation.ended')}}">
-                                Consultations finies
+                                Consultations du jour
                             </a>
                         @endcan
                         @can('peut voir une consultation annulée')
@@ -141,7 +118,7 @@
                 <div id="collapseLabo" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a style="color:black;" class="collapse-item" href="">
+                        <a style="color:black;" class="collapse-item" href="{{route('laboratory.index')}}">
                             Examens en attente
                             <span style="background-color:red" class="badge">
                                 {{App\Models\Appointment::where('appointmentStatus', App\Enums\ConsultationStatusEnum::PENDING->value)->count()}}
@@ -209,37 +186,56 @@
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers"
-                    aria-expanded="true" aria-controls="collapseUsers">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLabo2"
+                    aria-expanded="true" aria-controls="collapseLabo2">
                     <i style="color:white;" class="fas fa-fw fa-wrench"></i>
-                    <span style="color:white;">Gestion du personnel</span>
+                    <span style="color:white;">Gestion Labo</span>
                 </a>
-                <div id="collapseUsers" class="collapse" aria-labelledby="headingUtilities"
+                <div id="collapseLabo2" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a style="color:black;" class="collapse-item" href="">Liste agent (dispensaire)</a>
-                        <a style="color:black;" class="collapse-item" href="">Ajouter un agent</a>
+                        <a style="color:black;" class="collapse-item" href="">Liste des examens disponible</a>
+                        <a style="color:black;" class="collapse-item" href="">Ajouter un examen</a>
                     </div>
                 </div>
             </li>
 
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLabo"
-                    aria-expanded="true" aria-controls="collapseLabo">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePharmacy2"
+                    aria-expanded="true" aria-controls="collapsePharmacy2">
                     <i style="color:white;" class="fas fa-fw fa-wrench"></i>
-                    <span style="color:white;">Gestion Labo</span>
+                    <span style="color:white;">Gestion Pharmacie</span>
                 </a>
-                <div id="collapseLabo" class="collapse" aria-labelledby="headingUtilities"
+                <div id="collapsePharmacy2" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a style="color:black;" class="collapse-item" href="">Liste des examens disponible</a>
-                        <a style="color:black;" class="collapse-item" href="">Ajouter un agent</a>
+                        <a style="color:black;" class="collapse-item" href="{{route('medicine.index')}}">Stock medicaments</a>
+                        <a style="color:black;" class="collapse-item" href="{{route('medicine.approv')}}">Approvisionement</a>
+                        <a style="color:black;" class="collapse-item" href="{{route('medicine.create')}}">Ajouter un nouveau produit</a>
+                    </div>
+                </div>
+            </li>
+
+            {{--SUBSCRIBERS--}}
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsesubscriber"
+                    aria-expanded="true" aria-controls="collapsesubscriber">
+                    <i style="color:white;" class="fas fa-fw fa-users"></i>
+                    <span style="color:white;">Gestion des abonné(e)s</span>
+                </a>
+                <div id="collapsesubscriber" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        @can('peut voir un abonée')
+                            <a style="color:black;" class="collapse-item" href="{{route('subscriber.index')}}">
+                                Liste des abonné(e)s
+                            </a>
+                        @endcan
+                        @can('peut créer un abonée')
+                            <a style="color:black;" class="collapse-item" href="{{route('subscriber.create')}}">
+                                Ajouter un abonné
+                            </a>
+                        @endcan
                     </div>
                 </div>
             </li>

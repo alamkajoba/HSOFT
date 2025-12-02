@@ -20,9 +20,9 @@ class Appointment extends Model
         return $this->belongsTo(Subscriber::class);
     }
 
-    public function consultation()
+    public function laboratory()
     {
-        return $this->hasOne(Consultation::class);
+        return $this->hasOne(Laboratory::class);
     }
 
     public function user()

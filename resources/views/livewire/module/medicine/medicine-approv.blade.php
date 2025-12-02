@@ -23,14 +23,14 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Rendez-vous</h1>
         <button style="background-color: rgb(7, 7, 99)" class="btn text-white">
-            Voir la liste
+            Voir le Stock
         </button>
     </div>
 
 
 
     <div class="justify-content-between card-header">
-        <form wire:submit="appointmentCreate()">
+        <form wire:submit="medicineApprov()">
             @csrf
             
             <div class="container">
@@ -42,32 +42,32 @@
                             type="text"
                             placeholder=""
                             wire:model.live="search"
-                            wire:keyup="searchSubscriber"
+                            wire:keyup="searchMedicine"
                         >
 
-                        @if (!empty($itemsSubscriber))
+                        @if (!empty($itemsMedicine))
                             <ul class="list-group mt-2">
                                 <h5>Resultat de la recherche :</h5>
-                                @forelse ($itemsSubscriber as $itemsSubscribers)
+                                @forelse ($itemsMedicine as $itemsMedicines)
                                     <a href="" class="list-group-item mb-2 flex bg-primary-200 hover:bg-primary-500"
-                                        wire:click.prevent="selectSubscriber({{$itemsSubscribers['id']}})">
-                                        {{ $itemsSubscribers['firstName'].' '. $itemsSubscribers['middleName'].' '. $itemsSubscribers['lastName'].' '.$itemsSubscribers['matricule']}}
+                                        wire:click.prevent="selectMedicine({{$itemsMedicines['id']}})">
+                                        {{ $itemsMedicines['nameMedicine'].' '. $itemsMedicines['quantity']}}
                                     </a>
                                 @empty
                                     <div class="list-group-item mb-2 flex bg-danger-200">
-                                        Aucun(e) Abonné(e)
+                                        Aucun produit a ce nom!...
                                     </div>
                                 @endforelse
                             </ul>
                         @endif
 
 
-                        <label for="">Prescription poids</label>
+                        <label for="">Quantite</label>
                         <input 
                             class="form-control"
-                            type="text"
-                            placeholder="poids en Kg"
-                            wire:model="weight"
+                            type="number"
+                            placeholder=""
+                            wire:model="quantity"
                         >
                     </div>
                 </div>
