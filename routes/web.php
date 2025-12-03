@@ -27,6 +27,8 @@ use App\Livewire\Module\Medicine\MedicineIndex;
 use App\Livewire\Module\Medicine\MedicineCreate;
 use App\Livewire\Module\Medicine\MedicineUpdate;
 use App\Livewire\Module\Medicine\MedicineApprov;
+use App\Livewire\Module\Pharmacy\PharmacyIndex;
+use App\Livewire\Module\Pharmacy\PharmacyCreate;
 
 Route::get('/', function () {
     return redirect()->route('login');
@@ -59,9 +61,6 @@ Route::middleware('auth')->prefix('laboratory')->name('laboratory.')->group(func
     Route::get('create', LaboratoryResult::class)->name('create');
     Route::get('ended', LaboratoryEnded::class)->name('ended');
     Route::get('cancelled', LaboratoryCancelled::class)->name('cancelled');
-    Route::get('addexam', AddLaboratoryExamCreate::class)->name('addexam');
-    Route::get('updateexam/{id}', AddLaboratoryExamUpdate::class)->name('updateexam');
-    Route::get('indexexam', AddLaboratoryExamIndex::class)->name('indexexam');
 });
 
 #Medicine routes
@@ -70,6 +69,12 @@ Route::middleware('auth')->prefix('medicine')->name('medicine.')->group(function
     Route::get('create', MedicineCreate::class)->name('create');
     Route::get('update/{id}', MedicineUpdate::class)->name('update');
     Route::get('approv', MedicineApprov::class)->name('approv');
+});
+
+#Pharmacy routes
+Route::middleware('auth')->prefix('pharmacy')->name('pharmacy.')->group(function () {
+    Route::get('index', PharmacyIndex::class)->name('index');
+    Route::get('create/{id}', PharmacyCreate::class)->name('create');
 });
 
 

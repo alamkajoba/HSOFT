@@ -32,7 +32,7 @@
     </div>
 
 
-
+    {{-- RADIO REQUEST --}}
     <div class="justify-content-between card-header">
         <div class="container">
             <div class="row">
@@ -57,7 +57,7 @@
             </div>
         </div>
 
-        <form wire:submit="submitConsultation">
+        <form method="POST" wire:submit="submitConsultation()">
             @csrf
             
             <div class="container">
@@ -175,7 +175,7 @@
                             class="form-control"
                             type="textarea"
                             placeholder=""
-                            wire:model="radio" 
+                            wire:model="examRequested" 
                             cols="30" 
                             rows="6">
 

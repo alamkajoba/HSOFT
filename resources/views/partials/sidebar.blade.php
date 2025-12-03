@@ -76,7 +76,7 @@
                 <div id="collapsePharmacie" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a style="color:black;" class="collapse-item" href="">Fil d'attente</a>
+                        <a style="color:black;" class="collapse-item" href="{{route('pharmacy.index')}}">Fil d'attente</a>
                         <a style="color:black;" class="collapse-item" href="">Consultations</a>
                     </div>
                 </div>

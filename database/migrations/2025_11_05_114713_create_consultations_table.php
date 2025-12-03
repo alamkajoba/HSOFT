@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('PhysicalExam');
             $table->string('vitalSign')->nullable();
             $table->string('treatment')->nullable();
+            $table->string('cure')->nullable();
             $table->string('specialNote')->nullable()->default('NULL');
             $table->timestamps();
 

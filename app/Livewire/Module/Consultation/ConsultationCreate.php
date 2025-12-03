@@ -19,6 +19,20 @@ class ConsultationCreate extends Component
     #[Validate('required')]
     public $examRequested;
 
+    #[Validate('required')]
+    public $symptomPatient;
+
+    #[Validate('required')]
+    public $PhysicalExam;
+
+    #[Validate('required')]
+    public $vitalSign;
+
+    #[Validate('required')]
+    public $treatment;
+
+    public $specialNote;
+
 
     //labo and radio
     public $examRequest;
@@ -51,13 +65,14 @@ class ConsultationCreate extends Component
         $this->validate();
         $user_id = Auth::id();
 
-        $consultation = Consultation::create([
+        Consultation::create([
             'appointment_id' => $this->appointment_id,
             'user_id' => $user_id,
             'symptomPatient' => $this->symptomPatient,
             'PhysicalExam' => $this->PhysicalExam,
             'vitalSign' => $this->vitalSign,
             'treatment' => $this->treatment,
+            'cure' => 'NULL',
             'specialNote' => $this->specialNote,
         ]);
 
